@@ -2,6 +2,8 @@ return {
 	-- Git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
+	-- Edit "surroundings" (parantheses, brackets, tags, etc...)
+	"tpope/vim-surround",
 	-- Maximize splits
 	{
 		"szw/vim-maximizer",
@@ -100,7 +102,7 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- satus updates for LSP
+			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
 			"jose-elias-alvarez/typescript.nvim",
 		},
 		config = function()

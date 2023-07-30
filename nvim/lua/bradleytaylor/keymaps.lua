@@ -7,10 +7,6 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- move blocks of text
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- cursor settings
 keymap.set("n", "J", "mzJ`z") -- keep cursor in place when appending next line
 keymap.set("n", "<C-d>", "<C-d>zz") -- keep cursor in the middle when jumping by page
