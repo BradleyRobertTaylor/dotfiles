@@ -2,9 +2,9 @@
 local lspconfig = require("lspconfig")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev")
+vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next")
+vim.keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<cr>")
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 
@@ -12,30 +12,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
 
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+		vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+		vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", opts)
 		vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "<leader>D", "<cmd>Lspsaga goto_type_definition<cr>", opts)
 		vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, opts)
 		vim.keymap.set("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, opts)
-
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
 		-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-
-		-- Lesser used functionalities
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 		vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 		vim.keymap.set("n", "<leader>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
 		-- Format file with LSP
-		vim.keymap.set("n", "<leader>rf", function()
+		vim.keymap.set("n", "F", function()
 			vim.lsp.buf.format({ async = true })
 		end, opts)
 	end,

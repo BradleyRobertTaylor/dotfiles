@@ -2,6 +2,10 @@ return {
 	-- Git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {},
+	},
 	-- Edit "surroundings" (parantheses, brackets, tags, etc...)
 	"tpope/vim-surround",
 	-- Maximize splits
@@ -104,10 +108,12 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
 			"jose-elias-alvarez/typescript.nvim",
+			"nvimdev/lspsaga.nvim",
 		},
 		config = function()
 			require("plugins.configs.lsp.lspconfig")
 			require("plugins.configs.lsp.mason")
+			require("plugins.configs.lsp.lspsaga")
 		end,
 	},
 	-- startup dashboard
