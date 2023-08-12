@@ -228,5 +228,5 @@ require("neo-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>") -- keep cursor in the middle when jumping by page
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 vim.cmd([[nnoremap \ :Neotree reveal<cr>]])

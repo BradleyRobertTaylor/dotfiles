@@ -28,7 +28,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("plugins.configs.catppuccin")
+			require("bradleytaylor.colors")
 		end,
 	},
 	-- Lualine statusline
@@ -40,6 +40,9 @@ return {
 		opts = {
 			options = {
 				theme = "catppuccin",
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
+				globalstatus = true,
 			},
 		},
 	},
