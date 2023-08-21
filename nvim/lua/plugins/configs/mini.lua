@@ -8,6 +8,8 @@ require("mini.comment").setup({
 	},
 })
 
+require("mini.indentscope").setup({ symbol = "│" })
+
 require("mini.move").setup({
 	-- Module mappings. Use `''` (empty string) to disable one.
 	mappings = {

@@ -13,7 +13,7 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-	dashboard.button("n", "  New file", "<cmd>ene <BAR> startinsert<CR>"),
+	dashboard.button("e", "  File explorer", "<cmd>Neotree toggle<CR>"),
 	dashboard.button("f", "󰈞  Find file", "<cmd>Telescope find_files<CR>"),
 	dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua<CR>"),
 	dashboard.button("u", "  Update plugins", "<cmd>Lazy sync<CR>"),
