@@ -137,6 +137,12 @@ return {
 		end,
 	},
 	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("plugins.configs.indent-blankline")
+		end,
+	},
+	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
