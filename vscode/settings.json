@@ -1,0 +1,81 @@
+{
+  "editor.tabSize": 2,
+  "editor.lineNumbers": "relative",
+  "editor.fontSize": 16,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prettier.singleQuote": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "workbench.colorTheme": "Sublime Material Theme - Dark",
+  "workbench.iconTheme": "material-icon-theme",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.minimap.enabled": false,
+
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+
+  "vim.leader": "<space>",
+  "vim.insertModeKeyBindings": [],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] },
+    {
+      "before": ["leader", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    // Navigation
+    // Switch between
+    { "before": ["<S-h>"], "commands": [":bprevious"] },
+    { "before": ["<S-l>"], "commands": [":bnext"] },
+    // splits
+    { "before": ["leader", "s", "v"], "commands": [":vsplit"] },
+    { "before": ["leader", "s", "h"], "commands": [":split"] },
+    // No highlight
+    { "before": ["<C-n>"], "commands": [":nohl"] },
+    { "before": ["K"], "commands": ["lineBreakInsert"], "silent": true },
+    // panes
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.focusBelowGroup"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.focusAboveGroup"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    // FILE TREE
+    {
+      "before": ["leader", "e"],
+      "commands": ["workbench.explorer.fileView.focus"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    // Move selected lines while staying in visual mode
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "breadcrumbs.enabled": false,
+  "editor.fontFamily": "MesloLGS NF"
+}
