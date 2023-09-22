@@ -24,7 +24,7 @@ return {
 	},
 	-- Colorscheme
 	{
-		"catppuccin/nvim",
+		"loctvl842/monokai-pro.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -39,7 +39,7 @@ return {
 		},
 		opts = {
 			options = {
-				theme = "catppuccin",
+				theme = "monokai-pro",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -69,6 +69,7 @@ return {
 			require("plugins.configs.telescope")
 		end,
 	},
+	-- syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -80,6 +81,7 @@ return {
 			require("plugins.configs.treesitter")
 		end,
 	},
+	-- convenient file navigation
 	{
 		"theprimeagen/harpoon",
 		config = function()
@@ -142,6 +144,7 @@ return {
 			require("plugins.configs.indent-blankline")
 		end,
 	},
+	-- formatters, linters, and diagnostics
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },

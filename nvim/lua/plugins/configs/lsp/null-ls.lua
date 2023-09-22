@@ -7,12 +7,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.eslint_d.with({
-			-- only enable eslint if root has .eslintrc.js
-			condition = function(utils)
-				return utils.root_has_file(".eslintrc.js")
-			end,
-		}),
+		null_ls.builtins.diagnostics.eslint_d,
 	},
 	-- for format on save
 	on_attach = function(current_client, bufnr)
