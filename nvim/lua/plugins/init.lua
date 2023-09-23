@@ -2,10 +2,7 @@ return {
 	-- git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {},
-	},
+	{ "lewis6991/gitsigns.nvim", opts = {} },
 	-- maximize splits
 	{
 		"szw/vim-maximizer",
@@ -14,10 +11,7 @@ return {
 		},
 	},
 	-- tmux for window split navigation
-	{
-		"aserowy/tmux.nvim",
-		opts = {},
-	},
+	{ "aserowy/tmux.nvim", opts = {} },
 	-- colorscheme
 	{
 		"loctvl842/monokai-pro.nvim",
@@ -141,8 +135,5 @@ return {
 			require("plugins.configs.mini")
 		end,
 	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		opts = {},
-	},
+	{ "lukas-reineke/indent-blankline.nvim", opts = {} },
 }
