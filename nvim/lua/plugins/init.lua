@@ -1,28 +1,26 @@
 return {
-	-- Git related plugins
+	-- git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {},
 	},
-	-- Edit "surroundings" (parantheses, brackets, tags, etc...)
+	-- edit "surroundings" (parantheses, brackets, tags, etc...)
 	"tpope/vim-surround",
-	-- Maximize splits
+	-- maximize splits
 	{
 		"szw/vim-maximizer",
-		config = function()
-			vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
-		end,
+		keys = {
+			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Maximize split" },
+		},
 	},
-	-- Tmux for window split navigation
+	-- tmux for window split navigation
 	{
 		"aserowy/tmux.nvim",
-		config = function()
-			require("tmux").setup()
-		end,
+		opts = {},
 	},
-	-- Colorscheme
+	-- colorscheme
 	{
 		"loctvl842/monokai-pro.nvim",
 		lazy = false,
@@ -31,7 +29,7 @@ return {
 			require("bradleytaylor.colors")
 		end,
 	},
-	-- Lualine statusline
+	-- lualine statusline
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
@@ -46,7 +44,7 @@ return {
 			},
 		},
 	},
-	-- File tree
+	-- file tree
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -59,7 +57,7 @@ return {
 			require("plugins.configs.neo-tree")
 		end,
 	},
-	-- Fuzzy finder
+	-- fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
@@ -89,10 +87,10 @@ return {
 		end,
 	},
 	{
-		-- Autocompletion
+		-- autocompletion
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			-- Snippet Engine & its associated nvim-cmp source
+			-- snippet Engine & its associated nvim-cmp source
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp", -- adds LSP completion capabilities
@@ -121,13 +119,16 @@ return {
 			require("plugins.configs.lsp.lspsaga")
 		end,
 	},
-	-- startup dashboard
+	-- formatters, linters, and diagnostics
 	{
-		"goolord/alpha-nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
 		config = function()
-			require("plugins.configs.alpha")
+			require("plugins.configs.lsp.null-ls")
 		end,
 	},
 	-- several modules (eg., pairs, indent context, commenting...)
@@ -140,20 +141,6 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("plugins.configs.indent-blankline")
-		end,
-	},
-	-- formatters, linters, and diagnostics
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-		config = function()
-			require("plugins.configs.lsp.null-ls")
-		end,
+		opts = {},
 	},
 }
