@@ -6,8 +6,6 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = {},
 	},
-	-- edit "surroundings" (parantheses, brackets, tags, etc...)
-	"tpope/vim-surround",
 	-- maximize splits
 	{
 		"szw/vim-maximizer",
@@ -135,7 +133,7 @@ return {
 			require("plugins.configs.lsp.null-ls")
 		end,
 	},
-	-- several modules (eg., pairs, indent context, commenting...)
+	-- several modules (eg., pairs, surround, commenting, moving text...)
 	{
 		"echasnovski/mini.nvim",
 		version = false,

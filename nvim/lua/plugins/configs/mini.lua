@@ -28,3 +28,5 @@ require("mini.move").setup({
 		reindent_linewise = true,
 	},
 })
+
+require("mini.surround").setup()
