@@ -38,15 +38,17 @@ return {
 	},
 	-- file tree
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
 		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = {
+			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle file explorer" },
 		},
 		config = function()
-			require("plugins.configs.neo-tree")
+			require("plugins.configs.nvim-tree")
 		end,
 	},
 	-- fuzzy finder

@@ -1,14 +1,18 @@
 local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
 -- for format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
 	sources = {
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.eslint_d.with({
-			diagnostics_format = "[eslint] #{m}\n(#{c})",
+		formatting.prettierd,
+		formatting.stylua,
+		diagnostics.eslint_d.with({
+			condition = function(utils)
+				return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
+			end,
 		}),
 	},
 	-- for format on save
