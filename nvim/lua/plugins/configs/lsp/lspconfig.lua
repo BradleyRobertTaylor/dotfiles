@@ -18,15 +18,15 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 	-- format
-	vim.keymap.set("n", "ff", function()
+	vim.keymap.set("n", "<leader>ff", function()
 		vim.lsp.buf.format({ async = true })
 	end, opts)
 
 	-- typescript keymaps
 	if client.name == "tsserver" then
 		vim.keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-		vim.keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-		vim.keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+		vim.keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
+		vim.keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
 	end
 end
 

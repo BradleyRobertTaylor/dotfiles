@@ -44,3 +44,13 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
+
+local treesitter_context = require("treesitter-context")
+
+treesitter_context.setup({
+	max_lines = 1, -- How many lines the window should span. Values <= 0 mean no limit.
+})
+
+vim.keymap.set("n", "[c", function()
+	treesitter_context.go_to_context()
+end, { silent = true })
