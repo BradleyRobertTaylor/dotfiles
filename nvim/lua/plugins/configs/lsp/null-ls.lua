@@ -11,11 +11,6 @@ null_ls.setup({
 	sources = {
 		formatting.prettierd,
 		formatting.stylua,
-		diagnostics.eslint_d.with({
-			condition = function(utils)
-				return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" })
-			end,
-		}),
 	},
 	-- for format on save
 	on_attach = function(current_client, bufnr)

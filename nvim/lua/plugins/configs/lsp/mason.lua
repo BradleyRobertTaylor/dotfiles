@@ -15,6 +15,7 @@ mason_lspconfig.setup({
 		"gopls",
 		"solargraph",
 		"pyright",
+		"eslint",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -24,6 +25,5 @@ mason_null_ls.setup({
 	ensure_installed = {
 		"prettierd",
 		"stylua",
-		"eslint_d",
 	},
 })
