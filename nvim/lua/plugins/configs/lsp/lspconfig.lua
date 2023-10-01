@@ -1,61 +1,49 @@
 local lspconfig = require("lspconfig")
+local telescope = require("telescope.builtin")
+local keymap = vim.keymap
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- diagnostics
-	vim.keymap.set("n", "<leader>dl", require("telescope.builtin").diagnostics, opts)
-	vim.keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-	vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-	vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+	keymap.set("n", "<leader>dl", telescope.diagnostics, opts) -- show diagnostics for file
+	keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- line diagnostics
+	keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to prev diagnostic
+	keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic
 
-	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, opts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-	vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-	vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-
-	-- format
-	vim.keymap.set("n", "<leader>ff", function()
-		vim.lsp.buf.format({ async = true })
-	end, opts)
-
-	-- typescript keymaps
-	if client.name == "tsserver" then
-		vim.keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-		vim.keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports
-		vim.keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables
-	end
+	keymap.set("n", "gr", telescope.lsp_references, opts) -- show lsp references
+	keymap.set("n", "gd", telescope.lsp_definitions, opts) -- go to definition
+	keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+	keymap.set("n", "gi", telescope.lsp_implementations, opts) -- show lsp implementations
+	keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- show code actions
+	keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+	keymap.set("n", "K", vim.lsp.buf.hover, opts) -- hover docs
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- configure html server
+-- change diagnostic symbols
+local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
--- configure go server
 lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
--- configure typescript server with plugin
-require("typescript").setup({
+lspconfig["tsserver"].setup({
 	server = {
 		capabilities = capabilities,
 		on_attach = on_attach,
 	},
-})
-
--- configure eslint server
-lspconfig["eslint"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 })
 
 -- configure pyright server
@@ -64,13 +52,11 @@ lspconfig["pyright"].setup({
 	on_attach = on_attach,
 })
 
--- configure css server
 lspconfig["cssls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
--- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,

@@ -107,29 +107,29 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
-			"jose-elias-alvarez/typescript.nvim",
-			"nvimdev/lspsaga.nvim",
 		},
 		config = function()
 			require("plugins.configs.lsp.lspconfig")
 			require("plugins.configs.lsp.mason")
-			require("plugins.configs.lsp.lspsaga")
 		end,
 	},
 	-- formatters, linters, and diagnostics
 	{
-		"jay-babu/mason-null-ls.nvim",
+		"stevearc/conform.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
 		config = function()
-			require("plugins.configs.lsp.null-ls")
+			require("plugins.configs.conform")
 		end,
 	},
-	-- several modules (eg., pairs, surround, commenting, moving text...)
+	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("plugins.configs.lint")
+		end,
+	},
 	{
 		"echasnovski/mini.nvim",
 		version = false,
