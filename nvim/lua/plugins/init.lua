@@ -64,7 +64,7 @@ return {
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		},
 	},
-	-- syntax highlighting
+	-- syntax highlighting, autoclose html tags, show current context
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -88,7 +88,7 @@ return {
 		-- autocompletion
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			-- snippet Engine & its associated nvim-cmp source
+			-- snippet engine & its associated nvim-cmp source
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp", -- adds LSP completion capabilities
@@ -137,5 +137,4 @@ return {
 			require("plugins.configs.mini")
 		end,
 	},
-	{ "lukas-reineke/indent-blankline.nvim", opts = {} },
 }

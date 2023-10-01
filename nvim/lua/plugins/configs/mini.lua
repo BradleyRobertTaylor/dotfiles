@@ -28,3 +28,12 @@ require("mini.move").setup({
 })
 
 require("mini.surround").setup()
+
+-- require("mini.indentscope").setup({
+-- 	symbol = "│",
+-- 	draw = {
+-- 		animation = function()
+-- 			return 0
+-- 		end,
+-- 	},
+-- })
