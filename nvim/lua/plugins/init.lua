@@ -3,6 +3,13 @@ return {
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	{ "lewis6991/gitsigns.nvim", opts = {} },
+	-- visualize undo history
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
+		},
+	},
 	-- maximize splits
 	{
 		"szw/vim-maximizer",
@@ -14,7 +21,7 @@ return {
 	{ "aserowy/tmux.nvim", opts = {} },
 	-- colorscheme
 	{
-		"loctvl842/monokai-pro.nvim",
+		"catppuccin/nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -29,7 +36,7 @@ return {
 		},
 		opts = {
 			options = {
-				theme = "monokai-pro",
+				theme = "catppuccin",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				globalstatus = true,

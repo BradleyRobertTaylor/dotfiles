@@ -7,18 +7,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
-
--- disable mini indentscope
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = {
--- 		"help",
--- 		"lazy",
--- 		"mason",
--- 		"toggleterm",
--- 		"lazyterm",
--- 		"NvimTree",
--- 	},
--- 	callback = function()
--- 		vim.b.miniindentscope_disable = true
--- 	end,
--- })
