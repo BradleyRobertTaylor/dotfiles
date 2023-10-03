@@ -137,6 +137,7 @@ return {
 			require("plugins.configs.lint")
 		end,
 	},
+	-- various utilities (commenting, pairs, surrounds, etc...)
 	{
 		"echasnovski/mini.nvim",
 		version = false,

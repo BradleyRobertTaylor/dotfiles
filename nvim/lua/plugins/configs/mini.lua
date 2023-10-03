@@ -1,3 +1,5 @@
+require("mini.pairs").setup()
+
 require("mini.comment").setup({
 	options = {
 		custom_commentstring = function()
