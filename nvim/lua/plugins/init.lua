@@ -145,4 +145,13 @@ return {
 			require("plugins.configs.mini")
 		end,
 	},
+	-- buffers with tab behaviors
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("plugins.configs.bufferline")
+		end,
+	},
 }
