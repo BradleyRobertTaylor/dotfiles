@@ -1,5 +1,5 @@
 local opt = vim.opt
-local win = vim.wo
+local wo = vim.wo
 
 -- keep fat cursor
 opt.guicursor = ""
@@ -29,7 +29,7 @@ opt.incsearch = true
 
 -- cursor line
 opt.cursorline = true
-win.cursorcolumn = true
+wo.cursorcolumn = true
 
 -- appearance
 opt.termguicolors = true

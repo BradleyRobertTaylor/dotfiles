@@ -3,6 +3,8 @@ return {
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	{ "lewis6991/gitsigns.nvim", opts = {} },
+	-- surrounds
+	"tpope/vim-surround",
 	-- visualize undo history
 	{
 		"mbbill/undotree",
@@ -143,7 +145,7 @@ return {
 			require("plugins.configs.lint")
 		end,
 	},
-	-- various utilities (commenting, pairs, surrounds, etc...)
+	-- various utilities (commenting, pairs, moving text, etc...)
 	{
 		"echasnovski/mini.nvim",
 		version = false,
