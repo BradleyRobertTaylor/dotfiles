@@ -19,8 +19,6 @@ return {
 			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Maximize split" },
 		},
 	},
-	-- tmux for window split navigation
-	{ "aserowy/tmux.nvim", opts = {} },
 	-- colorscheme
 	{
 		"catppuccin/nvim",
@@ -157,5 +155,12 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		opts = {},
+	},
+	--
+	{
+		"mrjones2014/smart-splits.nvim",
+		config = function()
+			require("plugins.configs.smart-splits")
+		end,
 	},
 }
