@@ -63,13 +63,19 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
 		-- or                              , branch = '0.1.x',
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			"nvim-lua/plenary.nvim",
+		},
 		keys = {
 			{ "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 			{ "<C-f>", "<cmd>Telescope live_grep<cr>", desc = "Grep string" },
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		},
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
 	},
 	-- syntax highlighting, autoclose html tags, show current context
 	{
@@ -145,13 +151,9 @@ return {
 			require("plugins.configs.mini")
 		end,
 	},
-	-- buffers with tab behaviors
+	-- better looking ui for vim.ui.select and vim.ui.input
 	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("plugins.configs.bufferline")
-		end,
+		"stevearc/dressing.nvim",
+		opts = {},
 	},
 }
