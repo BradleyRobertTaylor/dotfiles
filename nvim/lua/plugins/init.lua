@@ -25,18 +25,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("one_monokai").setup({
-				transparent = true,
-			})
-			vim.cmd.colorscheme("one_monokai")
-		end,
-	},
-	{
-		"catppuccin/nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			-- require("bradleytaylor.colors")
+			require("bradleytaylor.colors")
 		end,
 	},
 	-- lualine statusline
@@ -132,7 +121,6 @@ return {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
 		},
 		config = function()
 			require("plugins.configs.lsp.lspconfig")
@@ -167,11 +155,22 @@ return {
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
-	--
+	-- manage splits
 	{
 		"mrjones2014/smart-splits.nvim",
 		config = function()
 			require("plugins.configs.smart-splits")
+		end,
+	},
+	-- lazy.nvim
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("plugins.configs.noice")
 		end,
 	},
 }
