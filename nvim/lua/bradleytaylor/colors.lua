@@ -2,7 +2,8 @@ require("catppuccin").setup({
 	flavour = "mocha", -- latte, frappe, macchiato, mocha
 	color_overrides = {
 		mocha = {
-			base = "#11111b",
+			-- base = "#11111b",
+			base = "#000000",
 		},
 	},
 	integrations = {
