@@ -21,7 +21,11 @@
 -- vim.cmd.colorscheme("catppuccin")
 
 require("one_monokai").setup({
-	transparent = true,
+	-- transparent = true,
+	colors = {
+		bg = "#000000",
+		-- vulcan = "#1e2024",
+	},
 })
 
 vim.cmd.colorscheme("one_monokai")

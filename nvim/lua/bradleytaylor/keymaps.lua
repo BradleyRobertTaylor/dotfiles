@@ -28,7 +28,7 @@ keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+keymap.set("n", "<leader>sx", "<cmd>close<cr>") -- close current split window
 
--- buffer management
-keymap.set("n", "<C-w>", "<cmd>bd<cr>") -- delete buffer
+-- toggle word wrap
+keymap.set("n", "<leader>ww", "<cmd>set wrap!<cr>")

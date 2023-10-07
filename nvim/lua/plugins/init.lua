@@ -25,7 +25,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("bradleytaylor.colors")
+			require("bradleytaylor.colorscheme")
 		end,
 	},
 	-- lualine statusline
