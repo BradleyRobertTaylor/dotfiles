@@ -120,6 +120,7 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
+			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
@@ -160,17 +161,6 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		config = function()
 			require("plugins.configs.smart-splits")
-		end,
-	},
-	-- lazy.nvim
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		config = function()
-			require("plugins.configs.noice")
 		end,
 	},
 }
