@@ -5,6 +5,9 @@ require("noice").setup({
 	messages = {
 		enabled = false,
 	},
+	popupmenu = {
+		enabled = false,
+	},
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {
