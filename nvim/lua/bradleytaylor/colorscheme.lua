@@ -20,12 +20,8 @@
 --
 -- vim.cmd.colorscheme("catppuccin")
 
-require("one_monokai").setup({
-	-- transparent = true,
-	colors = {
-		bg = "#000000",
-		-- vulcan = "#1e2024",
-	},
+-- Lua
+require("onedark").setup({
+	style = "warmer",
 })
-
-vim.cmd.colorscheme("one_monokai")
+require("onedark").load()

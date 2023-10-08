@@ -21,7 +21,7 @@ return {
 	},
 	-- colorscheme
 	{
-		"cpea2506/one_monokai.nvim",
+		"navarasu/onedark.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -35,14 +35,9 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = {
-			options = {
-				theme = "one_monokai",
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
-				globalstatus = true,
-			},
-		},
+		config = function()
+			require("plugins.configs.lualine")
+		end,
 	},
 	-- file tree
 	{
@@ -121,6 +116,7 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
+			{ "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach", opts = {} },
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
@@ -161,17 +157,6 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		config = function()
 			require("plugins.configs.smart-splits")
-		end,
-	},
-	-- better lsp windows and status updates for lsp
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		config = function()
-			require("plugins.configs.noice")
 		end,
 	},
 }
