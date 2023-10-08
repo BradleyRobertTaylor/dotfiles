@@ -21,7 +21,7 @@ return {
 	},
 	-- colorscheme
 	{
-		"navarasu/onedark.nvim",
+		"loctvl842/monokai-pro.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()

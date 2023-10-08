@@ -2,15 +2,6 @@ local lspconfig = require("lspconfig")
 local telescope = require("telescope.builtin")
 local keymap = vim.keymap
 
--- add borders to lsp and diagnostic windows
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-vim.diagnostic.config({
-	float = {
-		border = "rounded",
-	},
-})
-
 local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -39,6 +30,11 @@ for type, icon in pairs(signs) do
 end
 
 lspconfig["html"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["solargraph"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
