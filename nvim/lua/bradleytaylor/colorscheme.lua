@@ -1,10 +1,9 @@
-local monokai = require("monokai-pro")
-
-monokai.setup({
-	filter = "spectrum",
-	background_clear = { "telescope" },
+-- Default options:
+require("kanagawa").setup({
+	background = {
+		dark = "wave",
+	},
 })
 
-monokai.load()
-
-vim.cmd.colorscheme("monokai-pro")
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")
