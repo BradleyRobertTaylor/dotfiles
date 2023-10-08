@@ -31,6 +31,7 @@ return {
 	-- lualine statusline
 	{
 		"nvim-lualine/lualine.nvim",
+		lazy = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
@@ -120,7 +121,6 @@ return {
 		dependencies = {
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} }, -- status updates for LSP
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
@@ -161,6 +161,17 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		config = function()
 			require("plugins.configs.smart-splits")
+		end,
+	},
+	-- better lsp windows and status updates for lsp
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("plugins.configs.noice")
 		end,
 	},
 }
