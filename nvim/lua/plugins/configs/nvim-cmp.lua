@@ -6,6 +6,10 @@ local lspkind = require("lspkind")
 -- Set completeopt for better completion experience
 vim.opt.completeopt = "menu,menuone,noselect"
 
+local winhighlight = {
+	winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -33,5 +37,9 @@ cmp.setup({
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 		}),
+	},
+	window = {
+		completion = cmp.config.window.bordered(winhighlight),
+		documentation = cmp.config.window.bordered(winhighlight),
 	},
 })

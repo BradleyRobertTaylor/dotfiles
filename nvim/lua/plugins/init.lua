@@ -21,7 +21,7 @@ return {
 	},
 	-- colorscheme
 	{
-		"rebelot/kanagawa.nvim",
+		"bluz71/vim-moonfly-colors",
 		lazy = false,
 		priority = 1000,
 		config = function()

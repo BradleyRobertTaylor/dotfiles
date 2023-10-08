@@ -1,9 +1,15 @@
--- Default options:
-require("kanagawa").setup({
-	background = {
-		dark = "wave",
-	},
-})
+vim.g.moonflyNormalFloat = true
+vim.g.moonflyVirtualTextColor = true
 
--- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
+vim.g.moonflyWinSeparator = 2
+vim.opt.fillchars = {
+	horiz = "━",
+	horizup = "┻",
+	horizdown = "┳",
+	vert = "┃",
+	vertleft = "┫",
+	vertright = "┣",
+	verthoriz = "╋",
+}
+
+vim.cmd("colorscheme moonfly")
