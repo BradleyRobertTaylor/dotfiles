@@ -50,10 +50,8 @@ lspconfig["gopls"].setup({
 })
 
 lspconfig["tsserver"].setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 lspconfig["jsonls"].setup({
