@@ -27,7 +27,7 @@ require("nvim-treesitter.configs").setup({
 	-- Enable nvim-ts-context-commentstring
 	context_commentstring = {
 		enable = true,
-		enable_autocmd = false,
+		enable_autocmd = false, -- integration with Mini.comment
 	},
 
 	-- Automatically install missing parsers when entering buffer
