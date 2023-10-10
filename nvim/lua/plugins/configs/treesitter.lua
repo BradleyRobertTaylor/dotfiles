@@ -10,13 +10,13 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"markdown",
 		"markdown_inline",
-		"svelte",
 		"lua",
 		"vim",
 		"dockerfile",
 		"gitignore",
 		"go",
 		"ruby",
+		"graphql",
 	},
 
 	-- Enable nvim-ts-autotag (use treesitter to autoclose and autorename html tags)

@@ -39,6 +39,12 @@ lspconfig["solargraph"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["graphql"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
+})
+
 lspconfig["marksman"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
