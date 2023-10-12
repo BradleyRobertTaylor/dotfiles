@@ -2,6 +2,11 @@ local lspconfig = require("lspconfig")
 local telescope = require("telescope.builtin")
 local keymap = vim.keymap
 
+-- add rounded borders to diagnostics float
+vim.diagnostic.config({
+	float = { border = "rounded" },
+})
+
 local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -61,10 +66,8 @@ lspconfig["tsserver"].setup({
 })
 
 lspconfig["jsonls"].setup({
-	server = {
-		capabilities = capabilities,
-		on_attach = on_attach,
-	},
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 lspconfig["pyright"].setup({
