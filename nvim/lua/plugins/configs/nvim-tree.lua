@@ -19,6 +19,7 @@ require("nvim-tree").setup({
 	},
 	actions = {
 		open_file = {
+			-- works better with splits
 			window_picker = {
 				enable = false,
 			},

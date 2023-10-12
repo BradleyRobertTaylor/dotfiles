@@ -1,8 +1,8 @@
 local keymap = vim.keymap
 
-----------------------
--- General Keymaps
-----------------------
+---------------------
+-- General Keymaps --
+---------------------
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

@@ -45,6 +45,7 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+-- enable nvim-treesitter-context
 local treesitter_context = require("treesitter-context")
 
 treesitter_context.setup({
