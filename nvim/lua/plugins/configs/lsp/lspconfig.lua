@@ -2,9 +2,30 @@ local lspconfig = require("lspconfig")
 local telescope = require("telescope.builtin")
 local keymap = vim.keymap
 
--- add rounded borders to diagnostics float
+-- Specify how the border looks like
+local border = {
+	{ "┌", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "┐", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "┘", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "└", "FloatBorder" },
+	{ "│", "FloatBorder" },
+}
+
+-- Add the border on hover and on signature help popup window
+local handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
+-- Add border to the diagnostic popup window
 vim.diagnostic.config({
-	float = { border = "rounded" },
+	virtual_text = {
+		prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
+	},
+	float = { border = border },
 })
 
 local on_attach = function(_, bufnr)
@@ -41,57 +62,68 @@ end
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["solargraph"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["graphql"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 	filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
 })
 
 lspconfig["marksman"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["tsserver"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["jsonls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["cssls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 })
 
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	handlers = handlers,
 	settings = { -- custom settings for lua
 		Lua = {
 			-- make the language server recognize "vim" global
