@@ -6,9 +6,9 @@ local lspkind = require("lspkind")
 -- Set completeopt for better completion experience
 vim.opt.completeopt = "menu,menuone,noselect"
 
-local winhighlight = {
-	winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
-}
+-- local winhighlight = {
+-- 	winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+-- }
 
 cmp.setup({
 	snippet = {
@@ -39,7 +39,9 @@ cmp.setup({
 		}),
 	},
 	window = {
-		completion = cmp.config.window.bordered(winhighlight),
-		documentation = cmp.config.window.bordered(winhighlight),
+		-- completion = cmp.config.window.bordered(winhighlight),
+		-- documentation = cmp.config.window.bordered(winhighlight),
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 })
