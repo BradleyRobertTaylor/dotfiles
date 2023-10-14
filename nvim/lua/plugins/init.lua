@@ -26,7 +26,7 @@ return {
 	},
 	-- colorscheme
 	{
-		"catppuccin/nvim",
+		"luisiacc/gruvbox-baby",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -75,7 +75,7 @@ return {
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		},
 		config = function()
-			require("telescope").load_extension("fzf")
+			require("plugins.configs.telescope")
 		end,
 	},
 	-- syntax highlighting, autoclose html tags, show current context
