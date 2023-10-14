@@ -1,15 +1,21 @@
-vim.g.moonflyNormalFloat = true
-vim.g.moonflyVirtualTextColor = true
+require("catppuccin").setup({
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
+	color_overrides = {
+		mocha = {
+			base = "#11111b",
+		},
+	},
+	integrations = {
+		fidget = true,
+		harpoon = true,
+		mason = true,
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		treesitter = true,
+		mini = true,
+	},
+})
 
-vim.g.moonflyWinSeparator = 2
-vim.opt.fillchars = {
-	horiz = "━",
-	horizup = "┻",
-	horizdown = "┳",
-	vert = "┃",
-	vertleft = "┫",
-	vertright = "┣",
-	verthoriz = "╋",
-}
-
-vim.cmd("colorscheme moonfly")
+-- setup must be called before loading
+vim.cmd.colorscheme("catppuccin")

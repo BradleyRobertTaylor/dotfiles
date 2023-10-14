@@ -62,68 +62,58 @@ end
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["solargraph"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["graphql"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 	filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
 })
 
 lspconfig["marksman"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["gopls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["tsserver"].setup({
+	handlers = handlers,
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["jsonls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["cssls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 })
 
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	handlers = handlers,
 	settings = { -- custom settings for lua
 		Lua = {
 			-- make the language server recognize "vim" global

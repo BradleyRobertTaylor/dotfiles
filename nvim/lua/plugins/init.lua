@@ -2,7 +2,12 @@ return {
 	-- git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
-	{ "lewis6991/gitsigns.nvim", opts = {} },
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("plugins.configs.gitsigns")
+		end,
+	},
 	-- surrounds
 	"tpope/vim-surround",
 	-- visualize undo history
@@ -21,7 +26,7 @@ return {
 	},
 	-- colorscheme
 	{
-		"bluz71/vim-moonfly-colors",
+		"catppuccin/nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -157,6 +162,14 @@ return {
 		"mrjones2014/smart-splits.nvim",
 		config = function()
 			require("plugins.configs.smart-splits")
+		end,
+	},
+	-- lines to show indents
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
+			require("plugins.configs.indentblankline")
 		end,
 	},
 }

@@ -1,6 +1,6 @@
 require("lualine").setup({
 	options = {
-		theme = "moonfly",
+		theme = "catppuccin",
 		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
 		globalstatus = true,
