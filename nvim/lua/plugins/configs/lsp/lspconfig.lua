@@ -20,7 +20,6 @@ local keymap = vim.keymap
 -- 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 -- }
 
--- Add border to the diagnostic popup window
 vim.diagnostic.config({
 	virtual_text = {
 		prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
@@ -86,7 +85,6 @@ lspconfig["gopls"].setup({
 })
 
 lspconfig["tsserver"].setup({
-	-- handlers = handlers,
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
@@ -94,6 +92,13 @@ lspconfig["tsserver"].setup({
 lspconfig["jsonls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	-- configure schemastore for autocomplete in json files
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
 })
 
 lspconfig["pyright"].setup({

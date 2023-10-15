@@ -123,6 +123,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			{ "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach", opts = {} }, -- lsp status updates
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"b0o/schemastore.nvim", -- access to schemastore catalog for json
 		},
 		config = function()
 			require("plugins.configs.lsp.lspconfig")
