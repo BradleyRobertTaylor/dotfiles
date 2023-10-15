@@ -3,29 +3,29 @@ local telescope = require("telescope.builtin")
 local keymap = vim.keymap
 
 -- Specify how the border looks like
-local border = {
-	{ "┌", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "┐", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "┘", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "└", "FloatBorder" },
-	{ "│", "FloatBorder" },
-}
+-- local border = {
+-- 	{ "┌", "FloatBorder" },
+-- 	{ "─", "FloatBorder" },
+-- 	{ "┐", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- 	{ "┘", "FloatBorder" },
+-- 	{ "─", "FloatBorder" },
+-- 	{ "└", "FloatBorder" },
+-- 	{ "│", "FloatBorder" },
+-- }
 
 -- Add the border on hover and on signature help popup window
-local handlers = {
-	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-}
+-- local handlers = {
+-- 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+-- 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+-- }
 
 -- Add border to the diagnostic popup window
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = " ", -- Could be '●', '▎', 'x', '■', , 
+		prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
 	},
-	float = { border = border },
+	-- float = { border = border },
 })
 
 local on_attach = function(_, bufnr)
@@ -86,7 +86,7 @@ lspconfig["gopls"].setup({
 })
 
 lspconfig["tsserver"].setup({
-	handlers = handlers,
+	-- handlers = handlers,
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
