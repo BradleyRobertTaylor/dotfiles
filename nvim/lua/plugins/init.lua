@@ -85,6 +85,7 @@ return {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"windwp/nvim-ts-autotag",
 			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
 		config = function()
