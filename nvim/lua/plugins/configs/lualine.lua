@@ -1,6 +1,6 @@
 require("lualine").setup({
 	options = {
-		theme = "gruvbox-baby",
+		theme = "moonfly",
 		section_separators = { left = "", right = "" },
 		component_separators = { left = "", right = "" },
 		globalstatus = true,

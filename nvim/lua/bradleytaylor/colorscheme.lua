@@ -19,7 +19,18 @@
 -- 	},
 -- })
 
-vim.g.gruvbox_baby_use_original_palette = true
-vim.g.gruvbox_baby_background_color = "dark"
-vim.g.gruvbox_baby_function_style = "NONE"
-vim.cmd.colorscheme("gruvbox-baby")
+vim.opt.fillchars = {
+	horiz = "━",
+	horizup = "┻",
+	horizdown = "┳",
+	vert = "┃",
+	vertleft = "┫",
+	vertright = "┣",
+	verthoriz = "╋",
+}
+
+vim.g.moonflyNormalFloat = true
+vim.g.moonflyUndercurls = false
+vim.g.moonflyVirtualTextColor = true
+vim.g.moonflyWinSeparator = 2
+vim.cmd.colorscheme("moonfly")
