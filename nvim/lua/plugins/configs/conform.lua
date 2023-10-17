@@ -11,6 +11,7 @@ conform.setup({
 		json = { "prettier" },
 		markdown = { "prettier" },
 		lua = { "stylua" },
+		sql = { "sql_formatter" },
 	},
 
 	format_on_save = {

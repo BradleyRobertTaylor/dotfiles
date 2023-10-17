@@ -28,5 +28,6 @@ mason_tool_installer.setup({
 		"prettier",
 		"stylua",
 		"eslint_d",
+		"sql-formatter",
 	},
 })

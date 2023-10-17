@@ -3,7 +3,8 @@ require("ibl").setup({
 		char = "▏", -- slightly thinner line than default
 	},
 	scope = {
-		show_start = false,
-		show_end = false,
+		enabled = false,
+		-- show_start = false,
+		-- show_end = false,
 	},
 })
