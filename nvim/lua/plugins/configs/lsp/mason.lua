@@ -18,6 +18,7 @@ mason_lspconfig.setup({
 		"jsonls",
 		"marksman",
 		"graphql",
+		"dockerls",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
