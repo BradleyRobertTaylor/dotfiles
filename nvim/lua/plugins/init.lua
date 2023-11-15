@@ -8,6 +8,8 @@ return {
 			require("plugins.configs.gitsigns")
 		end,
 	},
+	-- tmux split integration
+	{ "christoomey/vim-tmux-navigator", lazy = false },
 	-- surrounds
 	"tpope/vim-surround",
 	-- visualize undo history
@@ -159,7 +161,7 @@ return {
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
-	-- manage splits
+	-- manage split size
 	{
 		"mrjones2014/smart-splits.nvim",
 		config = function()
