@@ -8,7 +8,7 @@ return {
 			require("plugins.configs.gitsigns")
 		end,
 	},
-	-- tmux split integration
+	-- tmux split integration movement
 	{ "christoomey/vim-tmux-navigator", lazy = false },
 	-- surrounds
 	"tpope/vim-surround",
@@ -46,19 +46,11 @@ return {
 			require("plugins.configs.lualine")
 		end,
 	},
-	-- file tree
+	-- file explorer
 	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		lazy = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		keys = {
-			{ "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle file explorer" },
-		},
+		"stevearc/oil.nvim",
 		config = function()
-			require("plugins.configs.nvim-tree")
+			require("plugins.configs.oil")
 		end,
 	},
 	-- fuzzy finder
