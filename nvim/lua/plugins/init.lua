@@ -28,6 +28,11 @@ return {
 	},
 	-- colorscheme
 	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+	},
+	{
 		"bluz71/vim-moonfly-colors",
 		lazy = false,
 		priority = 1000,
