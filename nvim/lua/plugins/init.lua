@@ -53,9 +53,15 @@ return {
 	},
 	-- file explorer
 	{
-		"stevearc/oil.nvim",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
 		config = function()
-			require("plugins.configs.oil")
+			require("plugins.configs.neo-tree")
 		end,
 	},
 	-- fuzzy finder
@@ -158,19 +164,12 @@ return {
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
-	-- manage split size
-	{
-		"mrjones2014/smart-splits.nvim",
-		config = function()
-			require("plugins.configs.smart-splits")
-		end,
-	},
 	-- lines to show indents
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		config = function()
-			require("plugins.configs.indentblankline")
+			require("plugins.configs.indent-blankline")
 		end,
 	},
 }
