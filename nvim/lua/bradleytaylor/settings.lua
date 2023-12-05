@@ -41,4 +41,4 @@ opt.backspace = "indent,eol,start"
 opt.splitright = true
 opt.splitbelow = true
 
-opt.updatetime = 500
+opt.updatetime = 100

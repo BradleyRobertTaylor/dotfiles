@@ -24,12 +24,6 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 
-	-- Enable nvim-ts-context-commentstring
-	context_commentstring = {
-		enable = true,
-		enable_autocmd = false, -- integration with Mini.comment
-	},
-
 	-- Automatically install missing parsers when entering buffer
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = true,
@@ -90,6 +84,11 @@ require("nvim-treesitter.configs").setup({
 
 -- enable nvim-treesitter-context
 local treesitter_context = require("treesitter-context")
+
+vim.g.skip_ts_context_commentstring_module = true
+require("ts_context_commentstring").setup({
+	enable_autocmd = false,
+})
 
 treesitter_context.setup({
 	max_lines = 1, -- How many lines the window should span. Values <= 0 mean no limit.
