@@ -1,10 +1,17 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 -- Set completeopt for better completion experience
 vim.opt.completeopt = "menu,menuone,noselect"
 
 cmp.setup({
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
+	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
@@ -15,6 +22,7 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
+		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
 		{ name = "path" },

@@ -70,6 +70,12 @@ lspconfig["solargraph"].setup({
 	handlers = handlers,
 })
 
+lspconfig["eslint"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	handlers = handlers,
+})
+
 lspconfig["prismals"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,

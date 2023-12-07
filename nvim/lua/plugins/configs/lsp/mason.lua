@@ -19,6 +19,7 @@ mason_lspconfig.setup({
 		"marksman",
 		"graphql",
 		"dockerls",
+		"eslint",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -28,6 +29,5 @@ mason_tool_installer.setup({
 	ensure_installed = {
 		"prettier",
 		"stylua",
-		"eslint_d",
 	},
 })

@@ -64,6 +64,16 @@ return {
 			require("plugins.configs.neo-tree")
 		end,
 	},
+	{
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neo-tree/neo-tree.nvim",
+		},
+		config = function()
+			require("lsp-file-operations").setup()
+		end,
+	},
 	-- fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
@@ -109,8 +119,8 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			-- snippet engine & its associated nvim-cmp source
-			-- 	"L3MON4D3/LuaSnip",
-			-- "saadparwaiz1/cmp_luasnip",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp", -- adds LSP completion capabilities
 			"hrsh7th/cmp-buffer", -- buffer completions
 			"hrsh7th/cmp-path", -- path completions
@@ -144,13 +154,13 @@ return {
 			require("plugins.configs.conform")
 		end,
 	},
-	{
-		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("plugins.configs.lint")
-		end,
-	},
+	-- {
+	-- 	"mfussenegger/nvim-lint",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	config = function()
+	-- 		require("plugins.configs.lint")
+	-- 	end,
+	-- },
 	-- various utilities (commenting, pairs, moving text, etc...)
 	{
 		"echasnovski/mini.nvim",
