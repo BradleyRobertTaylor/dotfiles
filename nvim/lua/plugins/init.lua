@@ -21,10 +21,11 @@ return {
 	},
 	-- maximize splits
 	{
-		"szw/vim-maximizer",
-		keys = {
-			{ "<leader>sm", "<cmd>MaximizerToggle<cr>", desc = "Maximize split" },
-		},
+		"anuvyklack/windows.nvim",
+		dependencies = { "anuvyklack/middleclass" },
+		config = function()
+			require("plugins.configs.windows")
+		end,
 	},
 	-- colorscheme
 	{
