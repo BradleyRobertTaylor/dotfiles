@@ -1,4 +1,4 @@
 require("bradleytaylor.keymaps")
-require("bradleytaylor.settings")
+require("bradleytaylor.options")
 require("bradleytaylor.autocmds")
 require("bradleytaylor.lazy")

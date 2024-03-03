@@ -14,6 +14,3 @@ vim.g.moonflyVirtualTextColor = true
 vim.g.moonflyWinSeparator = 2
 vim.g.moonflyTransparent = true
 vim.cmd.colorscheme("moonfly")
-
--- light theme
--- vim.cmd.colorscheme("dawnfox")

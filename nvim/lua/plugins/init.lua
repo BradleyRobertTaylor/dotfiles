@@ -13,21 +13,6 @@ return {
 			require("bradleytaylor.colorscheme")
 		end,
 	},
-	{
-		-- LSP Configuration & Plugins
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach", opts = {} }, -- lsp status updates
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"b0o/schemastore.nvim", -- access to schemastore catalog for json
-		},
-		config = function()
-			require("plugins.lsp.lspconfig")
-			require("plugins.lsp.mason")
-		end,
-	},
 	-- git related plugins
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
