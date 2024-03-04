@@ -24,7 +24,7 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
--- Preview substitutions live, as you type!
+-- preview substitutions live as you type
 vim.opt.inccommand = "split"
 
 -- cursor line
@@ -47,4 +47,3 @@ vim.opt.showmode = false
 
 -- decrease update time
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300

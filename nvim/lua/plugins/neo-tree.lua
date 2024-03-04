@@ -11,10 +11,11 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
+		local nmap = require("bradleytaylor.utils").nmap
 		require("neo-tree").setup({
 			hijack_netrw_behavior = "open_current",
 		})
 
-		vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle reveal<cr>")
+		nmap("<leader>e", "<cmd>Neotree toggle reveal<cr>", "Open File [E]xplorer")
 	end,
 }

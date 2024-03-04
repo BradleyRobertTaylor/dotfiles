@@ -6,13 +6,32 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} }, -- lsp status updates
 		"b0o/schemastore.nvim", -- access to schemastore catalog for json
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local telescope = require("telescope.builtin")
-		local keymap = vim.keymap
+		local nmap = require("bradleytaylor.utils").nmap
 
-		-- Specify how the border looks
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+			callback = function(event)
+				local map = function(keys, func, desc)
+					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+				end
+				local builtin = require("telescope.builtin")
+
+				map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
+				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+				map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
+				map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("K", vim.lsp.buf.hover, "Hover Documentation")
+				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+			end,
+		})
+
+		-- specify how the border looks
 		local border = {
 			{ "┌", "FloatBorder" },
 			{ "─", "FloatBorder" },
@@ -24,38 +43,17 @@ return {
 			{ "│", "FloatBorder" },
 		}
 
-		-- Add the border on hover and on signature help popup window
+		-- add the border on hover and on signature help popup window
 		local handlers = {
 			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
 		}
 
-		vim.diagnostic.config({
-			virtual_text = {
-				prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
-			},
-			float = { border = border },
-		})
-
-		local on_attach = function(_, bufnr)
-			local opts = { noremap = true, silent = true, buffer = bufnr }
-
-			-- diagnostics
-			keymap.set("n", "<leader>dl", telescope.diagnostics, opts) -- show diagnostics for file
-			keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- line diagnostics
-			keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to prev diagnostic
-			keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic
-
-			keymap.set("n", "gr", telescope.lsp_references, opts) -- show lsp references
-			keymap.set("n", "gd", telescope.lsp_definitions, opts) -- go to definition
-			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-			keymap.set("n", "gi", telescope.lsp_implementations, opts) -- show lsp implementations
-			keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- show code actions
-			keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- hover docs
-		end
-
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- diagnostics keymaps
+		nmap("[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
+		nmap("]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
+		nmap("<leader>d", vim.diagnostic.open_float, "Show [D]iagnostic error messages")
+		nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
 		-- change diagnostic symbols
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -64,148 +62,70 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		--------------------------------
-		-- Configure language servers --
-		--------------------------------
-
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["solargraph"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["eslint"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["prismals"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["graphql"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-			filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
-		})
-
-		lspconfig["marksman"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["dockerls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["gopls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["jsonls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-			-- configure schemastore for autocomplete in json files
-			settings = {
-				json = {
-					schemas = require("schemastore").json.schemas(),
-					validate = { enable = true },
-				},
+		vim.diagnostic.config({
+			virtual_text = {
+				prefix = "■ ", -- Could be '●', '▎', 'x', '■', , 
 			},
+			float = { border = border },
 		})
 
-		lspconfig["pyright"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["tailwindcss"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-		})
-
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			handlers = handlers,
-			settings = { -- custom settings for lua
-				Lua = {
-					-- make the language server recognize "vim" global
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						-- make language server aware of runtime files
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
+		local servers = {
+			lua_ls = {
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
 						},
 					},
 				},
 			},
-		})
-
-		local mason = require("mason")
-		local mason_lspconfig = require("mason-lspconfig")
-		local mason_tool_installer = require("mason-tool-installer")
-
-		mason.setup()
-
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"tsserver",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"lua_ls",
-				"gopls",
-				"solargraph",
-				"pyright",
-				"jsonls",
-				"marksman",
-				"graphql",
-				"dockerls",
-				"eslint",
+			html = {},
+			solargraph = {},
+			eslint = {},
+			graphql = {
+				filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
 			},
-			-- auto-install configured servers (with lspconfig)
-			automatic_installation = true, -- not the same as ensure_installed
-		})
+			marksman = {},
+			gopls = {},
+			dockerls = {},
+			tsserver = {},
+			pyright = {},
+			cssls = {},
+			tailwindcss = {},
+			jsonls = {
+				settings = {
+					-- configure schemastore for autocomplete in json files
+					json = {
+						schemas = require("schemastore").json.schemas(),
+						validate = { enable = true },
+					},
+				},
+			},
+		}
 
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettier",
-				"stylua",
+		require("mason").setup()
+
+		local ensure_installed = vim.tbl_keys(servers or {})
+		vim.list_extend(ensure_installed, {
+			"stylua",
+			"prettier",
+		})
+		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		require("mason-lspconfig").setup({
+			handlers = {
+				function(server_name)
+					local server = servers[server_name] or {}
+					-- This handles overriding only values explicitly passed
+					-- by the server configuration above. Useful when disabling
+					-- certain features of an LSP (for example, turning off formatting for tsserver)
+					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+					server.handlers = handlers
+					require("lspconfig")[server_name].setup(server)
+				end,
 			},
 		})
 	end,
