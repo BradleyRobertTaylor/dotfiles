@@ -1,4 +1,4 @@
-local cmd = require("bradleytaylor.utils").cmd
+local utils = require("bradleytaylor.utils")
 
 return {
 	"anuvyklack/windows.nvim",
@@ -13,6 +13,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>sm", cmd("WindowsMaximize"))
+		utils.nmap("<leader>sm", utils.cmd("WindowsMaximize"), "Toggle window maximizer")
 	end,
 }

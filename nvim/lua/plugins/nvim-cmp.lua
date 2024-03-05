@@ -49,10 +49,10 @@ return {
 				}),
 			},
 			-- for nicer completion windows
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
+			-- window = {
+			-- 	completion = cmp.config.window.bordered(),
+			-- 	documentation = cmp.config.window.bordered(),
+			-- },
 		})
 	end,
 }
