@@ -1,11 +1,11 @@
 local M = {}
 
-M.nmap = function(keys, func, desc)
-	vim.keymap.set("n", keys, func, { desc = desc })
+M.cmd = function(command)
+	return "<cmd>" .. command .. "<cr>"
 end
 
-M.cmd = function(command)
-	return table.concat({ "<Cmd>", command, "<CR>" })
+M.keymap = function(mode, keys, func, desc)
+	vim.keymap.set(mode, keys, func, { desc = desc })
 end
 
 return M

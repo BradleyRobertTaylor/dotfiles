@@ -9,7 +9,7 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local nmap = require("bradleytaylor.utils").nmap
+		local keymap = require("bradleytaylor.utils").keymap
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
@@ -50,10 +50,10 @@ return {
 		}
 
 		-- diagnostics keymaps
-		nmap("[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
-		nmap("]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
-		nmap("<leader>d", vim.diagnostic.open_float, "Show [D]iagnostic error messages")
-		nmap("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
+		keymap("n", "[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
+		keymap("n", "]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
+		keymap("n", "<leader>d", vim.diagnostic.open_float, "Show [D]iagnostic error messages")
+		keymap("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
 		-- change diagnostic symbols
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }

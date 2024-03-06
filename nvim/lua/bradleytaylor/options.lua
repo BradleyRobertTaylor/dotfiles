@@ -1,49 +1,57 @@
+local opt = vim.opt
+
 -- keep fat cursor
-vim.opt.guicursor = ""
+opt.guicursor = ""
 
 -- line numbers
-vim.opt.relativenumber = true
-vim.opt.number = true
+opt.relativenumber = true
+opt.number = true
 
 -- tabs & indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.softtabstop = 2
-vim.opt.smartindent = false
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.softtabstop = 2
+opt.smartindent = false
 
 -- line wrapping
-vim.opt.wrap = false
+opt.wrap = false
 
 -- never less than 10 lines when scrolling
-vim.opt.scrolloff = 10
+opt.scrolloff = 10
 
 -- search settings
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = false
+opt.incsearch = true
 
 -- preview substitutions live as you type
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
 
 -- cursor line
-vim.opt.cursorline = true
+opt.cursorline = true
 
 -- appearance
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
-vim.opt.signcolumn = "yes"
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
 
 -- backspace
-vim.opt.backspace = "indent,eol,start"
+opt.backspace = "indent,eol,start"
 
 -- split windows
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- don't show mode since it's in status line
-vim.opt.showmode = false
+opt.showmode = false
 
 -- decrease update time
-vim.opt.updatetime = 250
+opt.updatetime = 250
+
+-- sets how vim shows whitespace characters
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+opt.cmdheight = 1

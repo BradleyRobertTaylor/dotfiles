@@ -1,28 +1,30 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local keymap = require("bradleytaylor.utils").keymap
+local cmd = require("bradleytaylor.utils").cmd
+
+keymap("n", "<leader>e", cmd("Oil"), "Open file explorer")
+
 -- cursor settings
-vim.keymap.set("n", "J", "mzJ`z") -- keep cursor in place when appending next line
-vim.keymap.set("n", "<C-d>", "<C-d>zz") -- keep cursor in the middle when jumping by page
-vim.keymap.set("n", "<C-u>", "<C-u>zz") -- keep cursor in the middle when jumping by page
-vim.keymap.set("n", "n", "nzzzv") -- keep search terms in the middle
-vim.keymap.set("n", "N", "Nzzzv") -- keep search terms in the middle
+keymap("n", "J", "mzJ`z") -- keep cursor in place when appending next line
+keymap("n", "<C-d>", "<C-d>zz") -- keep cursor in the middle when jumping by page
+keymap("n", "<C-u>", "<C-u>zz") -- keep cursor in the middle when jumping by page
+keymap("n", "n", "nzzzv") -- keep search terms in the middle
+keymap("n", "N", "Nzzzv") -- keep search terms in the middle
 
 -- clipboard settings
-vim.keymap.set("x", "<leader>p", [["_dP]]) -- paste over without losing current register
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- yank to system clipboard
-vim.keymap.set("n", "<leader>Y", [["+Y]]) -- yank to system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- delete to void register
-vim.keymap.set("n", "x", '"_x') -- delete single character without copying into register
-
--- replace all instances of the current word the cursor is on
-vim.keymap.set("n", "<leader>ra", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap("x", "<leader>p", [["_dP]]) -- paste over without losing current register
+keymap({ "n", "v" }, "<leader>y", [["+y]]) -- yank to system clipboard
+keymap("n", "<leader>Y", [["+Y]]) -- yank to system clipboard
+keymap({ "n", "v" }, "<leader>d", [["_d]]) -- delete to void register
+keymap("n", "x", '"_x') -- delete single character without copying into register
 
 -- window management
-vim.keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-vim.keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-vim.keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-vim.keymap.set("n", "<leader>sx", "<cmd>close<cr>") -- close current split window
+keymap("n", "<leader>sv", "<C-w>v", "Split window vertically")
+keymap("n", "<leader>sh", "<C-w>s", "Split window horizotally")
+keymap("n", "<leader>se", "<C-w>=", "Equalize split width and heights")
+keymap("n", "<leader>sx", cmd("close"), "Close split")
 
 -- toggle word wrap
-vim.keymap.set("n", "<leader>ww", "<cmd>set wrap!<cr>")
+keymap("n", "<leader>ww", cmd("set wrap!"), "Toggle word wrap")

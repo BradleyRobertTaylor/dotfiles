@@ -16,12 +16,12 @@ return {
 				markdown = { "prettier" },
 				lua = { "stylua" },
 			},
-
-			format_on_save = {
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			},
+      -- enable format on save
+			-- format_on_save = {
+			-- 	lsp_fallback = true,
+			-- 	async = false,
+			-- 	timeout_ms = 1000,
+			-- },
 		})
 
 		vim.keymap.set({ "n", "v" }, "<leader>ff", function()
