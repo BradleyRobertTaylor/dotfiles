@@ -110,6 +110,7 @@ return {
 		require("mason").setup()
 
 		local ensure_installed = vim.tbl_keys(servers or {})
+    -- additional tools that aren't LSP servers
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"prettier",
@@ -120,9 +121,7 @@ return {
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
-					-- This handles overriding only values explicitly passed
-					-- by the server configuration above. Useful when disabling
-					-- certain features of an LSP (for example, turning off formatting for tsserver)
+          -- only override values explicitly passed to servers above
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					server.handlers = handlers
 					require("lspconfig")[server_name].setup(server)

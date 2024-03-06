@@ -8,22 +8,21 @@ return {
 		{ "nvim-telescope/telescope-ui-select.nvim" },
 	},
 	config = function()
-		pcall(require("telescope").load_extension("fzf"))
-		pcall(require("telescope").load_extension("ui-select"))
-
 		require("telescope").setup({
 			borderchars = {
 				prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
 				results = { " " },
 				preview = { " " },
 			},
-
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
 			},
 		})
+
+		pcall(require("telescope").load_extension("ui-select"))
+		pcall(require("telescope").load_extension("fzf"))
 
 		local keymap = require("bradleytaylor.utils").keymap
 		local builtin = require("telescope.builtin")
