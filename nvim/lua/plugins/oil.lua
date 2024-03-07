@@ -1,10 +1,15 @@
 return {
 	"stevearc/oil.nvim",
-	opts = {
-		keymaps = {
-			["<C-p>"] = false,
-		},
-	},
-	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+		require("oil").setup({
+			skip_confirm_for_simple_edits = false,
+			keymaps = {
+				["<C-p>"] = false,
+			},
+		})
+
+		local cmd = require("bradleytaylor.utils").cmd
+		vim.keymap.set("n", "-", cmd("Oil"), { desc = "Open file explorer" })
+	end,
 }

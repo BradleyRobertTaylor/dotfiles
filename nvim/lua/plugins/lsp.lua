@@ -19,15 +19,15 @@ return {
 				end
 				local builtin = require("telescope.builtin")
 
-				map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
-				map("gr", builtin.lsp_references, "[G]oto [R]eferences")
-				map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
-				map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
-				map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-				map("K", vim.lsp.buf.hover, "Hover Docs")
-				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("gd", builtin.lsp_definitions, "Go to definition")
+				map("gr", builtin.lsp_references, "Show list of references")
+				map("gI", builtin.lsp_implementations, "Go to implementation")
+				map("<leader>ds", builtin.lsp_document_symbols, "Show document symbols")
+				map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "Show workspace symbols")
+				map("<leader>rn", vim.lsp.buf.rename, "Rename")
+				map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+				map("K", vim.lsp.buf.hover, "Hover docs")
+				map("gD", vim.lsp.buf.declaration, "Go to declaration")
 			end,
 		})
 
@@ -50,10 +50,10 @@ return {
 		}
 
 		-- diagnostics keymaps
-		keymap("n", "[d", vim.diagnostic.goto_prev, "Go to previous [D]iagnostic message")
-		keymap("n", "]d", vim.diagnostic.goto_next, "Go to next [D]iagnostic message")
-		keymap("n", "<leader>d", vim.diagnostic.open_float, "Show [D]iagnostic error messages")
-		keymap("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
+		keymap("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic message")
+		keymap("n", "]d", vim.diagnostic.goto_next, "Next diagnostic message")
+		keymap("n", "<leader>d", vim.diagnostic.open_float, "Show diagnostic error")
+		keymap("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic quickfix list")
 
 		-- change diagnostic symbols
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -110,7 +110,7 @@ return {
 		require("mason").setup()
 
 		local ensure_installed = vim.tbl_keys(servers or {})
-    -- additional tools that aren't LSP servers
+		-- additional tools that aren't LSP servers
 		vim.list_extend(ensure_installed, {
 			"stylua",
 			"prettier",
@@ -121,7 +121,7 @@ return {
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
-          -- only override values explicitly passed to servers above
+					-- only override values explicitly passed to servers above
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					server.handlers = handlers
 					require("lspconfig")[server_name].setup(server)
