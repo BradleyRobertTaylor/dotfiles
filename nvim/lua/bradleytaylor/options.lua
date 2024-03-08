@@ -50,8 +50,4 @@ opt.showmode = false
 -- decrease update time
 opt.updatetime = 250
 
--- sets how vim shows whitespace characters
-opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
 opt.cmdheight = 1
