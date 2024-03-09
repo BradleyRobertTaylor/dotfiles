@@ -1,4 +1,3 @@
 return {
-	"christoomey/vim-tmux-navigator",
-	"tpope/vim-surround",
+  'christoomey/vim-tmux-navigator',
 }

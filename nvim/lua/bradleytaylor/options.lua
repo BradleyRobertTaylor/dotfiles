@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- keep fat cursor
-opt.guicursor = ""
+opt.guicursor = ''
 
 -- line numbers
 opt.relativenumber = true
@@ -27,18 +27,18 @@ opt.hlsearch = false
 opt.incsearch = true
 
 -- preview substitutions live as you type
-opt.inccommand = "split"
+opt.inccommand = 'split'
 
 -- cursor line
 opt.cursorline = true
 
 -- appearance
 opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
+opt.background = 'dark'
+opt.signcolumn = 'yes'
 
 -- backspace
-opt.backspace = "indent,eol,start"
+opt.backspace = 'indent,eol,start'
 
 -- split windows
 opt.splitright = true
