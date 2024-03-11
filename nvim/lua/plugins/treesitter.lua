@@ -4,6 +4,7 @@ return {
     'JoosepAlviste/nvim-ts-context-commentstring',
     'windwp/nvim-ts-autotag',
     'nvim-treesitter/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   build = ':TSUpdate',
   config = function()
@@ -37,6 +38,25 @@ return {
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
+
+      textobjects = {
+        select = {
+          enable = true,
+
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
+
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+            ['ac'] = '@class.outer',
+            -- You can optionally set descriptions to the mappings (used in the desc parameter of
+            -- nvim_buf_set_keymap) which plugins like which-key display
+            ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
+          },
+        },
+      },
     })
 
     -- enable nvim-treesitter-context
