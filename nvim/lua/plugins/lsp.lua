@@ -84,7 +84,7 @@ return {
         },
       },
       html = {},
-      solargraph = {},
+      -- solargraph = {},
       eslint = {},
       graphql = {
         filetypes = { 'graphql', 'gql', 'typescriptreact', 'javascriptreact' },

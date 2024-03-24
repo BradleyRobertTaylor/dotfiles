@@ -1,13 +1,14 @@
 return {
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'tiagovla/tokyodark.nvim',
     priority = 1000,
     config = function()
-      require('catppuccin').setup({
-        flavour = 'mocha', -- latte, frappe, macchiato, mocha
+      require('tokyodark').setup({
+        custom_palette = {
+          bg0 = '#000000',
+        },
       })
-      vim.cmd.colorscheme('catppuccin')
+      vim.cmd.colorscheme('tokyodark')
     end,
   },
 }
