@@ -28,6 +28,7 @@ return {
         map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
         map('K', vim.lsp.buf.hover, 'Hover docs')
         map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+        map('<leader>ff', vim.lsp.buf.format, 'Format file')
       end,
     })
 
@@ -84,8 +85,6 @@ return {
         },
       },
       html = {},
-      -- solargraph = {},
-      eslint = {},
       graphql = {
         filetypes = { 'graphql', 'gql', 'typescriptreact', 'javascriptreact' },
       },
@@ -93,7 +92,9 @@ return {
       gopls = {},
       dockerls = {},
       tsserver = {},
+      eslint = {},
       pyright = {},
+      ruff_lsp = {},
       cssls = {},
       tailwindcss = {},
       jsonls = {

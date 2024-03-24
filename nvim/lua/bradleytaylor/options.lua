@@ -7,6 +7,9 @@ opt.guicursor = ''
 opt.relativenumber = true
 opt.number = true
 
+-- enable mouse
+opt.mouse = 'a'
+
 -- tabs & indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
