@@ -11,6 +11,17 @@ return {
       },
     })
 
+    local MiniFiles = require('mini.files')
+    MiniFiles.setup()
+
+    local minifiles_toggle = function()
+      if not MiniFiles.close() then
+        MiniFiles.open()
+      end
+    end
+
+    vim.keymap.set('n', '<leader>e', minifiles_toggle, { desc = 'Open file explorer' })
+
     require('mini.surround').setup()
 
     require('mini.move').setup({
