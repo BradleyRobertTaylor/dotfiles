@@ -10,7 +10,6 @@ return {
       },
     })
 
-    local cmd = require('bradleytaylor.utils').cmd
-    vim.keymap.set('n', '-', cmd('Oil'), { desc = 'Open file explorer' })
+    vim.keymap.set('n', '-', vim.cmd.Oil, { desc = 'Open file explorer' })
   end,
 }

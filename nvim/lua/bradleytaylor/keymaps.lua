@@ -18,11 +18,12 @@ keymap('n', '<leader>Y', [["+Y]]) -- yank to system clipboard
 keymap({ 'n', 'v' }, '<leader>d', [["_d]]) -- delete to void register
 keymap('n', 'x', '"_x') -- delete single character without copying into register
 
--- window management
-keymap('n', '<leader>|', '<C-w>v', 'Split window vertically')
-keymap('n', '<leader>-', '<C-w>s', 'Split window horizotally')
-keymap('n', '<leader>se', '<C-w>=', 'Equalize split width and heights')
-keymap('n', '<leader>sx', cmd('close'), 'Close split')
-
 -- toggle word wrap
 keymap('n', '<leader>ww', cmd('set wrap!'), 'Toggle word wrap')
+
+-- quickfix list commands
+keymap('n', ']q', vim.cmd.cnext, 'Next quickfix')
+keymap('n', '[q', vim.cmd.cprevious, 'Previous quickfix')
+
+-- gives control c all behaviors of escape
+keymap('i', '<C-c>', '<Esc>')

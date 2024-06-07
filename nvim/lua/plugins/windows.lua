@@ -2,9 +2,6 @@ return {
   'anuvyklack/windows.nvim',
   dependencies = { 'anuvyklack/middleclass' },
   config = function()
-    local cmd = require('bradleytaylor.utils').cmd
-    local keymap = require('bradleytaylor.utils').keymap
-
     require('windows').setup({
       autowidth = {
         enable = false,
@@ -14,6 +11,6 @@ return {
       },
     })
 
-    keymap('n', '<leader>sm', cmd('WindowsMaximize'), 'Toggle window maximizer')
+    vim.keymap.set('n', '<C-w>m', vim.cmd.WindowsMaximize, { desc = 'Toggle window maximizer' })
   end,
 }

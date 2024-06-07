@@ -7,10 +7,10 @@ return {
     local keymap = require('bradleytaylor.utils').keymap
 
     keymap('n', '<leader>a', function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, 'Add file to Harpoon list')
 
-    keymap('n', '<leader>h', function()
+    keymap('n', '<leader>hl', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, 'Toggle Harpoon list')
 

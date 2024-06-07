@@ -1,6 +1,7 @@
 return {
   -- autocompletion
   'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
   dependencies = {
     -- snippet engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
@@ -14,6 +15,9 @@ return {
   config = function()
     local cmp = require('cmp')
     local lspkind = require('lspkind')
+
+    -- set color for copilot icon
+    vim.api.nvim_set_hl(0, 'CmpItemKindCopilot', { fg = '#6CC644' })
 
     require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -36,6 +40,7 @@ return {
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       sources = cmp.config.sources({
+        { name = 'copilot', group_index = 2 },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
@@ -46,6 +51,10 @@ return {
           mode = 'symbol', -- show only symbol annotations
           maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
           ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          -- add copilot icon to completion menu
+          symbol_map = {
+            Copilot = '',
+          },
         }),
       },
       window = {

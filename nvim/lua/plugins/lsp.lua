@@ -28,7 +28,6 @@ return {
         map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
         map('K', vim.lsp.buf.hover, 'Hover docs')
         map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-        map('<leader>ff', vim.lsp.buf.format, 'Format file')
       end,
     })
 

@@ -54,3 +54,5 @@ opt.showmode = false
 opt.updatetime = 250
 
 opt.cmdheight = 1
+
+opt.colorcolumn = '80'
