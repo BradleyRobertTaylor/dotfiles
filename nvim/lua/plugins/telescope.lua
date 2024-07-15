@@ -8,7 +8,7 @@ return {
     { 'nvim-telescope/telescope-ui-select.nvim' },
   },
   config = function()
-    require('telescope').setup({
+    require('telescope').setup {
       defaults = {
         sorting_strategy = 'ascending',
         layout_config = {
@@ -17,18 +17,23 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
       },
-    })
+    }
 
-    require('telescope').load_extension('ui-select')
-    require('telescope').load_extension('fzf')
+    require('telescope').load_extension 'ui-select'
+    require('telescope').load_extension 'fzf'
 
     local keymap = require('bradleytaylor.utils').keymap
-    local builtin = require('telescope.builtin')
+    local builtin = require 'telescope.builtin'
 
     keymap('n', '<leader>dl', builtin.diagnostics, 'Show diagnostics list')
     keymap('n', '<leader>sh', builtin.help_tags, 'Search help')

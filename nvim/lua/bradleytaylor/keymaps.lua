@@ -19,7 +19,10 @@ keymap({ 'n', 'v' }, '<leader>d', [["_d]]) -- delete to void register
 keymap('n', 'x', '"_x') -- delete single character without copying into register
 
 -- toggle word wrap
-keymap('n', '<leader>ww', cmd('set wrap!'), 'Toggle word wrap')
+keymap('n', '<leader>ww', cmd 'set wrap!', 'Toggle word wrap')
+
+keymap('n', 'H', '^', 'Move to first character')
+keymap('n', 'L', '$', 'Move to last character')
 
 -- quickfix list commands
 keymap('n', ']q', vim.cmd.cnext, 'Next quickfix')

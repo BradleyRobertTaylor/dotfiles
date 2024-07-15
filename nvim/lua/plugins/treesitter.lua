@@ -8,7 +8,7 @@ return {
   },
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter.configs').setup({
+    require('nvim-treesitter.configs').setup {
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
       ensure_installed = {
         'json',
@@ -57,18 +57,18 @@ return {
           },
         },
       },
-    })
+    }
 
     -- enable nvim-treesitter-context
-    local treesitter_context = require('treesitter-context')
+    local treesitter_context = require 'treesitter-context'
 
     vim.g.skip_ts_context_commentstring_module = true
-    require('ts_context_commentstring').setup({
+    require('ts_context_commentstring').setup {
       enable_autocmd = false,
-    })
+    }
 
-    treesitter_context.setup({
+    treesitter_context.setup {
       max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
-    })
+    }
   end,
 }

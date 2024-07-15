@@ -1,23 +1,20 @@
 return {
   {
-    -- 'tiagovla/tokyodark.nvim',
-    'bluz71/vim-moonfly-colors',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      -- require('tokyodark').setup({
-      --   custom_palette = {
-      --     bg0 = '#000000',
-      --   },
-      -- })
-      -- vim.cmd('colorscheme tokyodark')
+      require('catppuccin').setup {
+        color_overrides = {
+          mocha = {
+            base = '#11111b',
+            mantle = '#11111b',
+            crust = '#11111b',
+          },
+        },
+      }
 
-      -- moonfly theme config
-      vim.g.moonflyNormalFloat = true
-      vim.g.moonflyUndercurls = false
-      vim.g.moonflyVirtualTextColor = true
-      vim.g.moonflyWinSeparator = 2
-      vim.g.moonflyTransparent = true
-      vim.cmd.colorscheme('moonfly')
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }

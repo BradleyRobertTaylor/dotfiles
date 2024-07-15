@@ -1,13 +1,13 @@
 return {
   'zbirenbaum/copilot.lua',
-  dependencies = {
-    'zbirenbaum/copilot-cmp',
-  },
+  cmd = 'Copilot',
+  event = 'InsertEnter',
   config = function()
-    require('copilot').setup({
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    })
-    require('copilot_cmp').setup()
+    require('copilot').setup {
+      suggestion = {
+        auto_trigger = true,
+        keymap = { accept = '<Tab>' },
+      },
+    }
   end,
 }

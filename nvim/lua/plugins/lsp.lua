@@ -17,7 +17,7 @@ return {
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        local builtin = require('telescope.builtin')
+        local builtin = require 'telescope.builtin'
 
         map('gd', builtin.lsp_definitions, 'Go to definition')
         map('gr', builtin.lsp_references, 'Show list of references')
@@ -62,12 +62,12 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
     end
 
-    vim.diagnostic.config({
+    vim.diagnostic.config {
       virtual_text = {
         prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
       },
       float = { border = border },
-    })
+    }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
@@ -115,9 +115,9 @@ return {
       'stylua',
       'prettier',
     })
-    require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    require('mason-lspconfig').setup({
+    require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
@@ -127,6 +127,6 @@ return {
           require('lspconfig')[server_name].setup(server)
         end,
       },
-    })
+    }
   end,
 }
