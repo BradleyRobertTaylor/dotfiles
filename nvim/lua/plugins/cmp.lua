@@ -50,10 +50,6 @@ return {
           ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
         },
       },
-      window = {
-        documentation = cmp.config.window.bordered(),
-        completion = cmp.config.window.bordered(),
-      },
     }
   end,
 }

@@ -58,7 +58,7 @@ return {
         map('n', '<leader>ghb', function()
           gs.blame_line { full = true }
         end)
-        map('n', '<leader>tb', gs.toggle_current_line_blame)
+        map('n', '<leader>td', gs.toggle_current_line_blame)
         map('n', '<leader>ghd', gs.diffthis)
         map('n', '<leader>ghD', function()
           gs.diffthis '~'

@@ -32,22 +32,22 @@ return {
     })
 
     -- specify how the border looks
-    local border = {
-      { '┌', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '┐', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-      { '┘', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '└', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-    }
+    -- local border = {
+    --   { '┌', 'FloatBorder' },
+    --   { '─', 'FloatBorder' },
+    --   { '┐', 'FloatBorder' },
+    --   { '│', 'FloatBorder' },
+    --   { '┘', 'FloatBorder' },
+    --   { '─', 'FloatBorder' },
+    --   { '└', 'FloatBorder' },
+    --   { '│', 'FloatBorder' },
+    -- }
 
     -- add the border on hover and on signature help popup window
-    local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-    }
+    -- local handlers = {
+    --   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    --   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+    -- }
 
     -- diagnostics keymaps
     keymap('n', '[d', vim.diagnostic.goto_prev, 'Previous diagnostic message')
@@ -123,7 +123,7 @@ return {
           local server = servers[server_name] or {}
           -- only override values explicitly passed to servers above
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          server.handlers = handlers
+          -- server.handlers = handlers
           require('lspconfig')[server_name].setup(server)
         end,
       },

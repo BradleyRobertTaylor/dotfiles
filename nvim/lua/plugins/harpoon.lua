@@ -14,7 +14,7 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, 'Toggle Harpoon list')
 
-    for i = 1, 5 do
+    for i = 1, 9 do
       keymap('n', string.format('<space>%d', i), function()
         harpoon:list():select(i)
       end, string.format('Go to Harpoon List %s', i))
