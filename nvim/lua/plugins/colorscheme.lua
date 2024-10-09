@@ -1,11 +1,20 @@
 return {
-  'bluz71/vim-moonfly-colors',
-  priority = 1000,
-  config = function()
-    vim.g.moonflyUndercurls = false
-    vim.g.moonflyVirtualTextColor = true
-    vim.g.moonflyWinSeparator = 2
-    vim.g.moonflyTransparent = true
-    vim.cmd.colorscheme 'moonfly'
-  end,
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        color_overrides = {
+          mocha = {
+            base = '#11111b',
+            mantle = '#11111b',
+            crust = '#11111b',
+          },
+        },
+      }
+
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
 }

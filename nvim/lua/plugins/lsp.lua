@@ -6,7 +6,6 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'j-hui/fidget.nvim', opts = {} }, -- lsp status updates
     'b0o/schemastore.nvim', -- access to schemastore catalog for json
-    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
     local keymap = require('bradleytaylor.utils').keymap
@@ -31,23 +30,9 @@ return {
       end,
     })
 
-    -- specify how the border looks
-    -- local border = {
-    --   { '┌', 'FloatBorder' },
-    --   { '─', 'FloatBorder' },
-    --   { '┐', 'FloatBorder' },
-    --   { '│', 'FloatBorder' },
-    --   { '┘', 'FloatBorder' },
-    --   { '─', 'FloatBorder' },
-    --   { '└', 'FloatBorder' },
-    --   { '│', 'FloatBorder' },
-    -- }
-
-    -- add the border on hover and on signature help popup window
-    -- local handlers = {
-    --   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-    --   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-    -- }
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = 'rounded',
+    })
 
     -- diagnostics keymaps
     keymap('n', '[d', vim.diagnostic.goto_prev, 'Previous diagnostic message')
@@ -66,23 +51,14 @@ return {
       virtual_text = {
         prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
       },
-      float = { border = border },
+      float = { border = 'rounded' },
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-      },
+      lua_ls = {},
       html = {},
       graphql = {
         filetypes = { 'graphql', 'gql', 'typescriptreact', 'javascriptreact' },
@@ -90,7 +66,7 @@ return {
       marksman = {},
       gopls = {},
       dockerls = {},
-      tsserver = {},
+      ts_ls = {},
       eslint = {},
       pyright = {},
       ruff_lsp = {},
@@ -123,7 +99,6 @@ return {
           local server = servers[server_name] or {}
           -- only override values explicitly passed to servers above
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          -- server.handlers = handlers
           require('lspconfig')[server_name].setup(server)
         end,
       },

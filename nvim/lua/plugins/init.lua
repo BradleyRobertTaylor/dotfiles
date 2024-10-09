@@ -11,5 +11,10 @@ return {
       vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
     end,
   },
-  'vim-test/vim-test'
+  {
+    'vim-test/vim-test',
+    config = function()
+      vim.keymap.set('n', '<leader>tf', vim.cmd.TestFile)
+    end,
+  },
 }
