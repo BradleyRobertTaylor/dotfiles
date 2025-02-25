@@ -17,11 +17,11 @@ return {
           },
         },
       },
-      pickers = {
-        find_files = {
-          hidden = true,
-        },
-      },
+      -- pickers = {
+      --   find_files = {
+      --     hidden = true,
+      --   },
+      -- },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -42,5 +42,8 @@ return {
     keymap('n', '<leader>sw', builtin.grep_string, 'Search word under cursor')
     keymap('n', '<C-f>', builtin.live_grep, 'Grep all files')
     keymap('n', '<leader><leader>', builtin.buffers, 'Search existing buffers')
+    keymap('n', '<space>en', function()
+      builtin.find_files { cwd = vim.fn.stdpath 'config' }
+    end, 'Search config files')
   end,
 }
